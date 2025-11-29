@@ -57,7 +57,7 @@ public:
 	}
 };
 
-class RetrotCar : public Car
+class RetroCar : public Car
 {
 	double Speed_max;
 	string seat_material;
@@ -65,8 +65,8 @@ class RetrotCar : public Car
 	string type_dashboard;
 	int engineMaxRPM;
 public:
-	RetrotCar() {}
-	RetrotCar(string bm, string c, double w, double p, double mS, string sm, string th, string td, int eM) : Car(bm, c, w, p)
+	RetroCar() {}
+	RetroCar(string bm, string c, double w, double p, double mS, string sm, string th, string td, int eM) : Car(bm, c, w, p)
 	{
 		Speed_max = mS;
 		seat_material = sm;
@@ -92,4 +92,20 @@ int main()
 {
 	Car* car = nullptr;
 	int choice = 0;
+	cout << "1. sport car" << endl;
+	cout << "2. retro car" << endl;
+	cout << "your choice: ";
+	cin >> choice;
+	switch (choice)
+	{
+	case 1:
+		car = new SportCar("carbon", "\tred", 1200, 150000, 320, "V8", "sport rims", "sport steering", 2);
+		break;
+	case 2:
+		car = new RetroCar("steel", "\tblack", 1600, 90000, 180, "leather", "round chrome", "analog", 4500);
+		break;
+	}
+	car->Print();
+	cout << "Color" << car->GetColor() << endl;
+	cout << "Speed" << car->GetSpeed() << endl;
 }
